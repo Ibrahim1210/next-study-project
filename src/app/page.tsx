@@ -1,10 +1,30 @@
+"use client";
 import Card from "@/components/Card";
 import Image from "next/image";
 
 export default function Home() {
+  const handleClick = () => {
+    console.log("click");
+    return "ibrahim";
+  };
   return (
-    <main className="flex bg-orange-200 min-h-screen flex-col items-center justify-between p-24">
-      <Card image_url="https://placekitten.com/400/200"/>
-    </main>
+    <div className="flex bg-orange-200 p-24 ">
+      <Card
+        image_url="https://placekitten.com/400/200"
+        card_title="cat"
+        paragraph="lorem"
+        handleClick={handleClick}
+        button_text="Fallow"
+        favcount={5}
+      />
+      <Card
+        image_url="https://placekitten.com/400/200"
+        card_title="cat"
+        paragraph="lorem"
+        handleClick={handleClick}
+        button_text="Fallow"
+        favcount={5}
+      />
+    </div>
   );
 }
