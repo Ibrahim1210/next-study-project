@@ -28,7 +28,7 @@ const Card = () => {
 
       {/* Beğen Butonu */}
       <div className="px-4 pb-4 flex justify-between items-center">
-        <button className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 focus:outline-none focus:shadow-outline-blue">
+        <button className="bg-blue-00 text-white px-4 py-2 rounded-md hover:bg-blue-600 focus:outline-none focus:shadow-outline-blue">
           Beğen
         </button>
         <span className="text-blue-700">12 Beğeni</span>
