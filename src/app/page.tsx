@@ -8,7 +8,7 @@ export default function Home() {
     return "ibrahim";
   };
   return (
-    <div className="flex bg-orange-200 p-24 ">
+    <div className="grid grid-col-2  gap-[2.75rem] bg-orange-200 ">
       <Card
         image_url="https://placekitten.com/400/200"
         card_title="cat"
@@ -28,3 +28,5 @@ export default function Home() {
     </div>
   );
 }
+
+

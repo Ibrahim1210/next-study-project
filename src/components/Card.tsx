@@ -1,6 +1,11 @@
 "use client";
 import Image from "next/image";
 
+
+//destruction
+const props={name:{firstName:"ibo"}}
+const {name:{firstName:FIRST_NAME}}={name:{firstName:"ibo"}}
+console.log(FIRST_NAME);
 import React from "react";
 //image url
 // card basligi
@@ -19,10 +24,9 @@ interface ICard {
 }
 
 const Card = (props: ICard) => {
-  console.log(props);
 
   return (
-    <div className="bg-white rounded-md overflow-auto shadow-md w-64 mr-20">
+    <div className="bg-white rounded-md overflow-auto shadow-md w-2/5 ">
       {/* Resim */}
       <div className="relative h-72">
         <Image
@@ -44,15 +48,31 @@ const Card = (props: ICard) => {
       </div>
 
       {/* Beğen Butonu */}
-      <div className="px-4 pb-4 flex justify-between items-center">
-        <button
-          onClick={props.handleClick}
-          className="bg-blue-700 text-white px-4 py-2 rounded-md hover:bg-blue-600 focus:outline-none focus:shadow-outline-blue"
-        >
-          {props.button_text}
-        </button>
-        <span className="text-blue-700">{props.favcount}</span>
-      </div>
+      <CardFavSection
+        button_text={props.button_text}
+        handleClick={props.handleClick}
+        favcount={props.favcount}
+      />
+    </div>
+  );
+};
+
+interface ICardFavSection {
+  handleClick: () => string;
+  button_text: string;
+  favcount: number;
+}
+
+const CardFavSection = ({handleClick,button_text,favcount}: ICardFavSection) => {
+  return (
+    <div className="px-4 pb-4 flex justify-between items-center">
+      <button
+        onClick={handleClick}
+        className="bg-blue-700 text-white px-4 py-2 rounded-md hover:bg-blue-600 focus:outline-none focus:shadow-outline-blue"
+      >
+        {button_text}
+      </button>
+      <span className="text-blue-700">{favcount}</span>
     </div>
   );
 };
