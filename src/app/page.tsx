@@ -2,8 +2,11 @@
 import Card from "@/components/Card";
 import Image from "next/image";
 
+
+
 export default function Home() {
-  const handleClick = () => {
+  const handleClick = (e) => {
+    e.stopPropagation()
     console.log("click");
     return "ibrahim";
   };
@@ -19,7 +22,7 @@ export default function Home() {
       />
       <Card
         image_url="https://placekitten.com/400/200"
-        card_title="cat"
+        card_title="cat2"
         paragraph="lorem"
         handleClick={handleClick}
         button_text="Fallow"

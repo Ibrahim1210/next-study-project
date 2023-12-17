@@ -6,7 +6,7 @@ import Image from "next/image";
 const props={name:{firstName:"ibo"}}
 const {name:{firstName:FIRST_NAME}}={name:{firstName:"ibo"}}
 console.log(FIRST_NAME);
-import React from "react";
+import React, { useState } from "react";
 //image url
 // card basligi
 // paragraph
@@ -24,9 +24,11 @@ interface ICard {
 }
 
 const Card = (props: ICard) => {
-
+const showTitle=(e)=>{
+  e.stopPropagation
+  console.log(props.card_title)}
   return (
-    <div className="bg-white rounded-md overflow-auto shadow-md w-2/5 ">
+    <div onClick={showTitle} className="bg-white rounded-md overflow-auto shadow-md w-2/5 ">
       {/* Resim */}
       <div className="relative h-72">
         <Image
@@ -64,6 +66,16 @@ interface ICardFavSection {
 }
 
 const CardFavSection = ({handleClick,button_text,favcount}: ICardFavSection) => {
+  const [state,setState]=useState("")
+  const hello=(e,fieldName:string)=>{
+    console.log("hii",fieldName,e.target.value)
+  }
+  const handleInputChange=(e)=>{
+    console.log(e.target.value);
+   setState(e.target.value)
+  }
+
+  const middle=(e)=>hello(e,"name")
   return (
     <div className="px-4 pb-4 flex justify-between items-center">
       <button
@@ -72,9 +84,34 @@ const CardFavSection = ({handleClick,button_text,favcount}: ICardFavSection) => 
       >
         {button_text}
       </button>
+      <input onChange={handleInputChange} value={state}/>
+      <input onChange={(e)=>hello(e,"age")}value={"632462346362"}/>
       <span className="text-blue-700">{favcount}</span>
     </div>
   );
 };
 
 export default Card;
+
+const onCLick=(fnc:(e:any)=>void)=>{
+    showTitle(e)
+}
+
+
+const add=(a:number,b:number)=>{
+return a+b
+}
+const multiply=(a:number,b:number)=>{
+return a*b
+}
+const printHello=()=>{
+console.log("hello");
+}
+
+const calculation=(fnc:(x:number,y:number)=>number,b:number,c:number)=>{
+return fnc(b,c)
+}
+
+console.log(add(15,75))
+calculation(add,5,15)
+calculation(multiply,5,15)
