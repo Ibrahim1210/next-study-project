@@ -1,6 +1,6 @@
 "use client";
 
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, FormEvent, useState } from "react";
 
 interface IForm {
   title: string;
@@ -14,8 +14,16 @@ export const Form = ({ title }: IForm) => {
     alert("submit..." + state);
     setState("");
   };
+  const handleSubmit2 = (e:FormEvent<HTMLFormElement>) => {
+    alert("submit..." + state);
+    setState("");
+    e.preventDefault();
+  };
   return (
-    <div className="bg-orange-200 w-2/3 rounded-md p-4 flex gap-4 flex-row  items-center justify-center h-64">
+    <form
+      onSubmit={handleSubmit2}
+      className="bg-orange-200 w-2/3 rounded-md p-4 flex gap-4 flex-row  items-center justify-center h-64"
+    >
       <div>
         <label htmlFor="name">{title}</label>
         <input
@@ -31,6 +39,10 @@ export const Form = ({ title }: IForm) => {
       >
         Submit
       </button>
-    </div>
+      <input
+        type="submit"
+        className="bg-white rounded-md pr-4 pl-4 h-12 mt-6 "
+      />
+    </form>
   );
 };
